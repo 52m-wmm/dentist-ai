@@ -141,7 +141,7 @@ export async function bookAppointment(input: BookAppointmentInput) {
         doctorId: input.doctorId,
         date: new Date(input.date),
         time: input.time,
-        reason: input.reason || "General consultation",
+        reason: input.reason || "",
         status: "CONFIRMED",
       },
       include: {
