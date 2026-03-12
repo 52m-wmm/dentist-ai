@@ -43,7 +43,7 @@ function DoctorSelectionStep({
             <CardHeader className="pb-4">
               <div className="flex items-start gap-4">
                 <Image
-                  src={dentist.imageUrl!}
+                  src={dentist.imageUrl || "/doctor-placeholder.png"}
                   alt={dentist.name}
                   width={64}
                   height={64}
