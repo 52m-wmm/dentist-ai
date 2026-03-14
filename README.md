@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Dentist AI
 
-## Getting Started
+AI-powered voice assistant for dental clinics.
 
-First, run the development server:
+Dentist AI is a demo project that explores how AI voice agents can assist dental clinics with patient consultation and appointment workflows.
+Patients can ask questions through a voice assistant, while appointment booking is handled through a web interface.
 
-```bash
+
+Overview
+
+Dentist AI demonstrates how modern web applications can integrate AI voice agents with a full-stack web system.
+
+The AI assistant helps answer common patient questions, while the web application manages appointment requests and patient data.
+
+This project focuses on clean architecture and separation between:
+
+AI conversation layer
+
+application backend
+
+database persistence
+
+Features
+
+AI voice assistant for dental clinic consultation
+
+Real-time voice interaction
+
+Patient inquiry support
+
+Web-based appointment booking
+
+Full-stack implementation with modern web technologies
+
+Tech Stack
+
+Next.js 15 (App Router)
+
+React
+
+TypeScript
+
+Vapi AI – voice assistant integration
+
+Prisma ORM
+
+Vercel – deployment
+Architecture Explanation
+Voice Consultation Layer
+
+Patients interact with a Vapi AI voice assistant to ask questions such as:
+
+clinic services
+
+opening hours
+
+treatment information
+
+The voice assistant is responsible only for conversation and consultation.
+
+Web Application Layer
+
+When patients want to book an appointment, they use the web interface built with Next.js 15.
+
+The frontend collects patient information and sends requests to the backend.
+
+Backend Layer
+
+The Next.js API routes handle:
+
+appointment creation
+
+request validation
+
+business logic
+
+Data Layer
+
+Application data is stored using:
+
+Prisma ORM
+
+Database
+
+Only the backend API interacts with the database to ensure proper data management.
+
+Getting Started
+
+Clone the repository:
+
+git clone https://github.com/52m-wmm/dentist-ai.git
+cd dentist-ai
+
+Install dependencies:
+
+npm install
+
+Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open in browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
