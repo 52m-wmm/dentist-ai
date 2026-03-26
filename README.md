@@ -4,7 +4,9 @@ AI-powered voice assistant for dental clinics.
 
 Dentist AI is a demo project that explores how AI voice agents can assist dental clinics with patient consultation and appointment workflows.
 Patients can ask questions through a voice assistant, while appointment booking is handled through a web interface.
-
+TEST ACCOUNT:
+test@example.com 
+password test1234
 
 Overview
 
