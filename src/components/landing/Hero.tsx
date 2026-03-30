@@ -1,9 +1,9 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
 import { SignUpButton } from "@clerk/nextjs";
+import { StarIcon } from "@heroicons/react/24/solid";
 import { Calendar, MicIcon } from "lucide-react";
 import Image from "next/image";
-import { StarIcon } from "@heroicons/react/24/solid";
+import React from "react";
+import { Button } from "@/components/ui/button";
 
 function Hero() {
   return (

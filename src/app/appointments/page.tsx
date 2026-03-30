@@ -1,26 +1,38 @@
 "use client";
 
+import { format } from "date-fns";
+import { useState } from "react";
+import { toast } from "sonner";
 import { AppointmentConfirmationModal } from "@/components/appointments/AppointmentConfirmationModal";
 import BookingConfirmationStep from "@/components/appointments/BookingConfirmationStep";
 import DoctorSelectionStep from "@/components/appointments/DoctorSelectionStep";
 import ProgressSteps from "@/components/appointments/ProgressSteps";
 import TimeSelectionStep from "@/components/appointments/TimeSelectionStep";
 import Navbar from "@/components/Navbar";
-import { useBookAppointment, useUserAppointments } from "@/hooks/use-appointment";
+import {
+  useBookAppointment,
+  useUserAppointments,
+} from "@/hooks/use-appointment";
 import { APPOINTMENT_TYPES } from "@/lib/utils";
-import { format } from "date-fns";
-import { useState } from "react";
-import { toast } from "sonner";
+
+type BookedAppointment = {
+  doctorName: string;
+  date: string;
+  time: string;
+  patientEmail: string;
+} | null;
 
 function AppointmentsPage() {
   // state management for the booking process - this could be done with something like Zustand for larger apps
-  const [selectedDentistId, setSelectedDentistId] = useState<string | null>(null);
+  const [selectedDentistId, setSelectedDentistId] = useState<string | null>(
+    null,
+  );
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [currentStep, setCurrentStep] = useState(1); // 1: select dentist, 2: select time, 3: confirm
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [bookedAppointment, setBookedAppointment] = useState<any>(null);
+  const [bookedAppointment, setBookedAppointment] = useState<BookedAppointment>(null);
 
   const bookAppointmentMutation = useBookAppointment();
   const { data: userAppointments = [] } = useUserAppointments();
@@ -40,7 +52,9 @@ function AppointmentsPage() {
       return;
     }
 
-    const appointmentType = APPOINTMENT_TYPES.find((t) => t.id === selectedType);
+    const appointmentType = APPOINTMENT_TYPES.find(
+      (t) => t.id === selectedType,
+    );
 
     bookAppointmentMutation.mutate(
       {
@@ -63,7 +77,10 @@ function AppointmentsPage() {
               body: JSON.stringify({
                 userEmail: appointment.patientEmail,
                 doctorName: appointment.doctorName,
-                appointmentDate: format(new Date(appointment.date), "EEEE, MMMM d, yyyy"),
+                appointmentDate: format(
+                  new Date(appointment.date),
+                  "EEEE, MMMM d, yyyy",
+                ),
                 appointmentTime: appointment.time,
                 appointmentType: appointmentType?.name,
                 duration: appointmentType?.duration,
@@ -71,7 +88,8 @@ function AppointmentsPage() {
               }),
             });
 
-            if (!emailResponse.ok) console.error("Failed to send confirmation email");
+            if (!emailResponse.ok)
+              console.error("Failed to send confirmation email");
           } catch (error) {
             console.error("Error sending confirmation email:", error);
           }
@@ -86,8 +104,9 @@ function AppointmentsPage() {
           setSelectedType("");
           setCurrentStep(1);
         },
-        onError: (error) => toast.error(`Failed to book appointment: ${error.message}`),
-      }
+        onError: (error) =>
+          toast.error(`Failed to book appointment: ${error.message}`),
+      },
     );
   };
 
@@ -99,7 +118,9 @@ function AppointmentsPage() {
         {/* header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Book an Appointment</h1>
-          <p className="text-muted-foreground">Find and book with verified dentists in your area</p>
+          <p className="text-muted-foreground">
+            Find and book with verified dentists in your area
+          </p>
         </div>
 
         <ProgressSteps currentStep={currentStep} />
@@ -146,7 +167,10 @@ function AppointmentsPage() {
           onOpenChange={setShowConfirmationModal}
           appointmentDetails={{
             doctorName: bookedAppointment.doctorName,
-            appointmentDate: format(new Date(bookedAppointment.date), "EEEE, MMMM d, yyyy"),
+            appointmentDate: format(
+              new Date(bookedAppointment.date),
+              "EEEE, MMMM d, yyyy",
+            ),
             appointmentTime: bookedAppointment.time,
             userEmail: bookedAppointment.patientEmail,
           }}
@@ -156,10 +180,15 @@ function AppointmentsPage() {
       {/* SHOW EXISTING APPOINTMENTS FOR THE CURRENT USER */}
       {userAppointments.length > 0 && (
         <div className="mb-8 max-w-7xl mx-auto px-6 py-8">
-          <h2 className="text-xl font-semibold mb-4">Your Upcoming Appointments</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            Your Upcoming Appointments
+          </h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {userAppointments.map((appointment) => (
-              <div key={appointment.id} className="bg-card border rounded-lg p-4 shadow-sm">
+              <div
+                key={appointment.id}
+                className="bg-card border rounded-lg p-4 shadow-sm"
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="size-10 bg-primary/10 rounded-full flex items-center justify-center">
                     <img
@@ -169,8 +198,12 @@ function AppointmentsPage() {
                     />
                   </div>
                   <div>
-                    <p className="font-medium text-sm">{appointment.doctorName}</p>
-                    <p className="text-muted-foreground text-xs">{appointment.reason}</p>
+                    <p className="font-medium text-sm">
+                      {appointment.doctorName}
+                    </p>
+                    <p className="text-muted-foreground text-xs">
+                      {appointment.reason}
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-1 text-sm">

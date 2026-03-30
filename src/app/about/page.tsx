@@ -1,16 +1,12 @@
-import React from 'react'
-import { SignUpButton } from '@clerk/nextjs'
-import { Button } from "@/components/ui/button"
+import { SignUpButton } from "@clerk/nextjs";
 
 function HomePage() {
   return (
     <div>
-      <h1>
-          Welcome to DentistAI
-      </h1>
+      <h1>Welcome to DentistAI</h1>
       <SignUpButton></SignUpButton>
-      </div>
-  )
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;
