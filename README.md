@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦷 Dentist AI — AI Dental Assistant System
 
-## Getting Started
+## 🚀 Overview | 项目简介
 
-First, run the development server:
+**EN**  
+Dentist AI is an AI-powered dental assistant system designed to automate patient communication and appointment workflows.  
+It demonstrates how AI can be integrated into real-world business systems.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**CN**  
+Dentist AI 是一个基于 AI 的牙科助手系统，用于自动化患者咨询与预约流程，展示 AI 在实际业务中的落地能力。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Problem | 解决的问题
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**EN**
+- Manual patient inquiry handling is time-consuming  
+- Appointment scheduling lacks automation  
+- Inconsistent responses across staff  
 
-## Learn More
+**CN**
+- 人工回复患者咨询效率低  -北美40%牙科诊所电话发生在夜晚
+- 预约流程缺乏自动化  
+- 回复内容不一致  
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💡 Solution | 解决方案
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**EN**
+- AI-powered conversational assistant (via Vapi)  
+- Automated FAQ handling  
+- Appointment booking system  
+- Admin dashboard for clinic management  
 
-## Deploy on Vercel
+**CN**
+- 基于 Vapi 的 AI 对话助手  
+- 自动 FAQ 问答  
+- 在线预约系统  
+- 后台管理系统  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗️ Tech Stack | 技术架构
+
+**Frontend**
+- Next.js
+- React
+- TailwindCSS
+- TanStack Query
+
+**Backend**
+- Node.js
+- Prisma ORM
+
+**Database**
+- PostgreSQL (Neon)
+
+**AI**
+- Vapi (Voice AI)
+
+**Auth**
+- Clerk
+
+---
+
+## ⚙️ System Workflow | 系统流程
+
+1. User submits a query  
+2. AI assistant handles the response  
+3. Booking workflow is triggered if needed  
+
+---
+
+## 🔐 Test Account | 测试账号
+Email: test@example.com
+Password: test1234
